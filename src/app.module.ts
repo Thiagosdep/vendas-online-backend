@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-console.log(process.env.DB_USERNAME);
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -16,6 +15,8 @@ console.log(process.env.DB_USERNAME);
       host: process.env.DB_HOST,
       password: process.env.DB_PASSWORD,
       port: Number(process.env.DB_PORT),
+      synchronize: true, // it's better to use migrations
+      entities: [`${__dirname}/**/*.entity{.js,.ts}`],
     }),
     UserModule,
   ],
