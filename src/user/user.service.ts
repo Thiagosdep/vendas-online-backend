@@ -22,6 +22,7 @@ export class UserService {
     //                 => strong password
     return this.userRepository.save({
       ...createUser,
+      typeUser: 1, // add enum
       password: hashedPassword,
     });
   }
