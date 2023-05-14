@@ -11,7 +11,6 @@ import {
 import { CreateUserDto } from './dtos/createUser.dto';
 import { UserService } from './user.service';
 import { ReturnUserDto } from './dtos/returnUser.dto';
-import { UserEntity } from './entities/user.entity';
 
 @Controller('user')
 export class UserController {
