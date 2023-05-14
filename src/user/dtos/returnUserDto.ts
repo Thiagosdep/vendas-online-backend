@@ -1,7 +1,7 @@
 import { UserEntity } from '../entities/user.entity';
 
 export class ReturnUserDto {
-  id: string;
+  id: number;
   name: string;
   email: string;
   phone: string;
