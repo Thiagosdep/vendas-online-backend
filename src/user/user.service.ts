@@ -1,5 +1,9 @@
 import * as crypt from 'bcrypt';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { CreateUserDto } from './dtos/createUser.dto';
@@ -14,11 +18,18 @@ export class UserService {
   ) {}
 
   async create(createUser: CreateUserDto): Promise<UserEntity> {
+    const emailAlreadyInUse = await this.findUserByEmail(
+      createUser.email,
+    ).catch(() => undefined);
+
+    if (emailAlreadyInUse) {
+      throw new BadRequestException('email already in use!');
+    }
     // transform to a decoupled service
     const saltOrRounds = 10;
     const hashedPassword = await crypt.hash(createUser.password, saltOrRounds);
 
-    // add validations => unique cpf and email
+    // add validations => unique cpf
     //                 => strong password
     return this.userRepository.save({
       ...createUser,
