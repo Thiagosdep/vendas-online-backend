@@ -1,7 +1,6 @@
 import {
   Body,
   Controller,
-  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -11,17 +10,18 @@ import { AddressService } from './address.service';
 import { AddressEntity } from './entities/address.entity';
 import { Roles } from 'src/decorators/roles.decorator';
 import { UserType } from 'src/user/enums/userType.enum';
+import { UserId } from 'src/decorators/userId.decorator';
 
 @Roles(UserType.User)
 @Controller('address')
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
-  @Post('/:userId')
+  @Post()
   @UsePipes(ValidationPipe)
   async create(
     @Body() createAddress: CreateAddressDto,
-    @Param('userId') userId: number,
+    @UserId() userId: number,
   ): Promise<AddressEntity> {
     return this.addressService.create(createAddress, userId);
   }
