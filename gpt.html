@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Peixe sem animação</title>
+  <style>
+    body {
+      background-color: #87CEFA;
+    }
+
+    .peixe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #FFA07A;
+      box-shadow: 3px 3px 3px #888888;
+      z-index: 1;
+    }
+
+    .peixe::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(-50%, -50%);
+      height: 70%;
+      width: 70%;
+      background-color: #FFA07A;
+      border-radius: 50%;
+      z-index: 1;
+      box-shadow: 3px 3px 3px #888888;
+    }
+
+    .peixe::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      height: 40%;
+      width: 40%;
+      background-color: white;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 3px 3px 3px #888888;
+    }
+
+    .olho {
+      position: absolute;
+      top: 45%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      height: 25%;
+      width: 25%;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 1px 1px 1px #888888;
+      z-index: 3;
+    }
+
+    .olho::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 70%;
+      width: 70%;
+      border-radius: 50%;
+      background-color: black;
+      z-index: 4;
+    }
+
+    .barbatana {
+      position: absolute;
+      top: 50%;
+      left: -10%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      height: 60%;
+      width: 20%;
+      background-color: #FFA07A;
+      border-radius: 50%;
+      box-shadow: 3px 3px 3px #888888;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="peixe">
+    <div class="olho"></div>
+    <div class="barbatana"></div>
+  </div>
+</body>
+
+</html>
