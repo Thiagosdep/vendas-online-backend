@@ -1,5 +1,5 @@
 import { ExecutionContext, createParamDecorator } from '@nestjs/common';
-import { authorizationToLoginPayload } from 'src/utils/base64Converter';
+import { authorizationToLoginPayload } from '../utils/base64Converter';
 
 export const UserId = createParamDecorator((_, ctx: ExecutionContext) => {
   const { authorization } = ctx.switchToHttp().getRequest().headers;

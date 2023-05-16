@@ -4,8 +4,8 @@ import { Repository } from 'typeorm';
 
 import { AddressEntity } from './entities/address.entity';
 import { CreateAddressDto } from './dtos/createAddress.dto';
-import { UserService } from 'src/user/user.service';
-import { CityService } from 'src/city/city.service';
+import { UserService } from '../user/user.service';
+import { CityService } from '../city/city.service';
 
 @Injectable()
 export class AddressService {

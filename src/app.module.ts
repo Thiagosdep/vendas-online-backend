@@ -11,6 +11,7 @@ import { AddressModule } from './address/address.module';
 import { CacheModule } from './cache/cache.module';
 import { AuthModule } from './auth/auth.module';
 import { RolesGuard } from './guards/roles.guard';
+import { User2Service } from './user2/user2.service';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { RolesGuard } from './guards/roles.guard';
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
+    User2Service,
   ],
 })
 export class AppModule {}
